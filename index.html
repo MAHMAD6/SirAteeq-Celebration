@@ -224,7 +224,7 @@
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 <nav class="dots" id="dots">
   <a href="#home" title="Home"></a><a href="#team" title="Team"></a><a href="#tribute" title="Tribute"></a><a href="#qualities" title="Qualities"></a>
-  <a href="#journey" title="Journey"></a><a href="#wish" title="Make a wish"></a><a href="#wishes" title="Wishes"></a>
+  <a href="#journey" title="Journey"></a><a href="#wish" title="Make a wish"></a>
 </nav>
 
 <!-- HERO -->
@@ -243,7 +243,7 @@
     <p class="byline fu" style="animation-delay:2s">With love, by <strong>World Infotek Team</strong></p>
     <div class="btns fu" style="animation-delay:2.1s">
       <button class="btn" id="party">🎉 Celebrate</button>
-      <a class="btn ghost" href="#wishes">💌 Send Wishes</a>
+      <a class="btn ghost" href="#team">💌 Team Wishes</a>
     </div>
   </div>
   <a class="scroll-hint" href="#tribute"><span class="mouse"></span>Scroll<span class="chev"></span></a>
@@ -252,7 +252,7 @@
 <!-- TEAM -->
 <section id="team">
   <span class="eyebrow rv up">Presented By</span>
-  <h3 class="title rv up">The <em>World Infotek</em> Team</h3>
+  <h3 class="title rv up">Wishes from <em>World Infotek</em> Team</h3>
   <div class="divider rv zoom"></div>
   <p class="sub rv blur">The people behind this celebration — and their wishes for you</p>
   <div class="team">
@@ -320,21 +320,6 @@
     <p id="wishMsg" style="color:var(--muted);margin:10px 0 22px">Make a wish, then blow out the candles</p>
     <button class="btn" id="blow">🌬️ Blow the Candles</button>
   </div>
-  <a class="next" href="#wishes">Scroll to Wishes<i>↓</i></a>
-</section>
-
-<!-- WISHES -->
-<section id="wishes">
-  <span class="eyebrow rv up">From the Heart</span>
-  <h3 class="title rv up">Wishes from the <em>Team</em></h3>
-  <div class="divider rv zoom"></div>
-  <p class="sub rv blur">Add your message below</p>
-  <form id="wishForm" class="rv up">
-    <input id="wName" placeholder="Your name" required maxlength="40">
-    <textarea id="wText" placeholder="Write your wish for Sir Ateeq..." required maxlength="300"></textarea>
-    <button class="btn" type="submit">Add Wish ✨</button>
-  </form>
-  <div class="wishes" id="wishList"></div>
 </section>
 
 <footer>
@@ -380,7 +365,7 @@ $$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundi
 
 // Scroll-driven effects
 const heroIn=$('#heroInner'),prog=$('#progress'),track=$('#track'),fill=$('#tlFill'),tl=$('#timeline'),toTopBtn=$("#toTop"),blobs=$$('.blob');
-const secs=['home','team','tribute','qualities','journey','wish','wishes'].map(id=>document.getElementById(id)),dots=$$('#dots a');
+const secs=['home','team','tribute','qualities','journey','wish'].map(id=>document.getElementById(id)),dots=$$('#dots a');
 let ticking=false;
 function onScroll(){
   const y=scrollY,h=innerHeight,max=document.documentElement.scrollHeight-h;
@@ -445,20 +430,6 @@ function blow(){const out=!cs[0].classList.contains('out');
   else{wm.textContent='Make a wish, then blow out the candles';blowBtn.textContent='🌬️ Blow the Candles'}}
 blowBtn.onclick=blow;cs.forEach(c=>c.onclick=blow);
 
-// Wishes (stored in this browser only)
-const defaults=[
-  {n:'Muhammad Ahmad',t:'Happy Birthday, Sir! Your guidance has shaped how I think and work. Wishing you health, happiness and great success.'},
-  {n:'Mr. Shahzaib',t:'Many happy returns of the day, Sir. Thank you for your trust and leadership — may this year bring you everything you wish for.'},
-  {n:'Izaz Ur Rehman',t:'Happy Birthday, Sir Ateeq! Working with you is a privilege. May Allah bless you with a long, joyful and successful life.'},
-  {n:'World Infotek Team',t:'Thank you for leading us with vision and kindness. Wishing you endless success and happiness!'}];
-let wishes;try{wishes=JSON.parse(localStorage.getItem('ateeqWishesV2'))||defaults}catch{wishes=defaults}
-const list=$('#wishList');
-const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
-function render(newOne){list.innerHTML=wishes.map((w,i)=>`<div class="wish ${newOne&&i===0?'new':'rv up'}"><p>${esc(w.t)}</p><b>— ${esc(w.n)}</b></div>`).join('');
-  list.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.12+'s';io.observe(el)})}
-render();
-$('#wishForm').onsubmit=e=>{e.preventDefault();wishes.unshift({n:$('#wName').value.trim(),t:$('#wText').value.trim()});
-  try{localStorage.setItem('ateeqWishesV2',JSON.stringify(wishes))}catch{}render(true);e.target.reset();burst(120)};
 </script>
 </body>
 </html>

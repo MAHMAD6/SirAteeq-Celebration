@@ -349,7 +349,7 @@ $$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundi
   c.addEventListener('pointerleave',()=>c.style.transform='')});
 
 // Scroll-driven effects
-const heroIn=$('#heroInner'),prog=$('#progress'),track=$('#track'),fill=$('#tlFill'),tl=$('#timeline'),top=$('#toTop'),blobs=$$('.blob');
+const heroIn=$('#heroInner'),prog=$('#progress'),track=$('#track'),fill=$('#tlFill'),tl=$('#timeline'),toTopBtn=$("#toTop"),blobs=$$('.blob');
 const secs=['home','tribute','qualities','journey','wish','wishes'].map(id=>document.getElementById(id)),dots=$$('#dots a');
 let ticking=false;
 function onScroll(){
@@ -368,9 +368,10 @@ function onScroll(){
   const tr=tl.getBoundingClientRect(),tp=Math.min(Math.max((h*.6-tr.top)/tr.height,0),1);fill.style.height=tp*100+'%';
   // dots
   let a=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<h*.5)a=i});dots.forEach((d,i)=>d.classList.toggle('active',i===a));
-  top.classList.toggle('show',y>h*.8);ticking=false}
+  document.querySelectorAll(".rv:not(.in)").forEach(el=>{if(el.getBoundingClientRect().top<h*.92){el.classList.add("in");el.querySelectorAll("[data-count]").forEach(count)}});
+  toTopBtn.classList.toggle('show',y>h*.8);ticking=false}
 addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(onScroll);ticking=true}},{passive:true});onScroll();
-top.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+toTopBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
 
 // Confetti
 const cv=$('#confetti'),ctx=cv.getContext('2d');let parts=[];

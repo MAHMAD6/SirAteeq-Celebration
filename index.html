@@ -113,7 +113,7 @@
   .member.in:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(31,35,51,.12)}
   .avatar{width:150px;height:150px;margin:0 auto 18px;border-radius:50%;overflow:hidden;position:relative;
     background:radial-gradient(circle at 50% 30%,#fff6e0,#e8cf95 70%,#c9a24e);box-shadow:0 0 0 5px #fff,0 0 0 7px rgba(184,137,43,.35),0 15px 30px rgba(31,35,51,.15)}
-  .avatar img{position:absolute;left:0;bottom:0;width:100%;height:112%;object-fit:cover;object-position:50% 0;transition:transform .5s}
+  .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 35%;transition:transform .5s}
   .member:hover .avatar img{transform:scale(1.06)}
   .mwish{margin-top:16px;color:var(--text);opacity:.8;font-size:.92rem;font-style:italic;line-height:1.6}
   .member h4{font-family:'Playfair Display',serif;font-size:1.25rem}
@@ -141,7 +141,6 @@
   .quote .w.gold.lit{color:var(--gold)}
 
   /* ---------- Stats ---------- */
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
   .stat{text-align:center;padding:34px 20px;border:1px solid var(--border);border-radius:22px;background:var(--card);backdrop-filter:blur(10px)}
   .stat b{display:block;font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,3.4rem);color:var(--gold)}
   .stat span{color:var(--muted);font-size:.9rem;letter-spacing:1px}
@@ -273,21 +272,6 @@
 <!-- QUOTE -->
 <section class="quote" id="tribute">
   <p id="quote">A true leader does not create followers — he creates more leaders. Thank you, Sir Ateeq, for inspiring every member of World Infotek to dream bigger and work better.</p>
-  <a class="next" href="#stats">Scroll to In Numbers<i>↓</i></a>
-</section>
-
-<!-- STATS -->
-<section id="stats">
-  <span class="eyebrow rv up">In Numbers</span>
-  <h3 class="title rv up">A Legacy of <em>Excellence</em></h3>
-  <div class="divider rv zoom"></div>
-  <p class="sub rv blur">What your leadership means to all of us</p>
-  <div class="stats">
-    <div class="stat rv flip"><b data-count="100" data-suffix="%">0</b><span>Dedication</span></div>
-    <div class="stat rv flip"><b data-count="1000" data-suffix="+">0</b><span>Lessons Shared</span></div>
-    <div class="stat rv flip"><b data-count="24" data-suffix="/7">0</b><span>Inspiration</span></div>
-    <div class="stat rv flip"><b data-count="1" data-suffix="">0</b><span>Team, One Family</span></div>
-  </div>
   <a class="next" href="#qualities">Scroll to Qualities<i>↓</i></a>
 </section>
 

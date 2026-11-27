@@ -205,7 +205,7 @@
   footer .big{font-family:'Great Vibes',cursive;font-size:clamp(2.4rem,7vw,4rem);color:var(--gold);display:block;margin-bottom:10px}
   footer strong{color:var(--gold)}
 
-  .sound-prompt{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;
+  .sound-prompt{cursor:pointer;position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;
     background:rgba(251,249,245,.7);backdrop-filter:blur(14px);transition:opacity .6s}
   .sound-prompt.hide{opacity:0;pointer-events:none}
   .sp-card{max-width:420px;text-align:center;padding:40px 28px;border-radius:28px;background:#fff;border:1px solid var(--border);
@@ -213,8 +213,7 @@
   .sp-ic{font-size:3.4rem;animation:nb 1.8s ease-in-out infinite}
   .sp-card h3{font-family:'Playfair Display',serif;font-size:1.7rem;margin:10px 0 8px}
   .sp-card h3 em{font-style:normal;color:var(--gold)}
-  .sp-card p{color:var(--muted);margin-bottom:24px}
-  .sp-skip{display:block;margin-top:16px;color:var(--muted);font-size:.85rem}
+  .sp-card p{color:var(--muted)}
   .music{position:fixed;right:18px;bottom:18px;z-index:70;width:58px;height:58px;border-radius:50%;border:1px solid var(--border);
     background:rgba(255,255,255,.85);backdrop-filter:blur(10px);color:var(--gold);font-size:1.4rem;cursor:pointer;box-shadow:0 8px 24px rgba(31,35,51,.15);transition:transform .2s}
   .music:hover{transform:scale(1.1)}
@@ -439,16 +438,14 @@ mb.onclick=()=>toggleMusic();
   const go=e=>{evs.forEach(n=>removeEventListener(n,go,true));
     if(e.target.closest&&e.target.closest('#music'))return; // its click handler mutes
     if(playing&&ac)ac.resume().then(playSong)};
-  if(blocked)evs.forEach(n=>addEventListener(n,go,true));
-  // Welcome prompt (always shown at start) so the visitor taps once and the song starts
+  if(!blocked)return; // sound already playing, no prompt needed
+  evs.forEach(n=>addEventListener(n,go,true));
+  // Browser needs permission: show prompt, tap anywhere to start
   const ov=document.createElement('div');ov.className='sound-prompt';
   ov.innerHTML=`<div class="sp-card"><div class="sp-ic">🎂</div><h3>A surprise for <em>Sir Ateeq</em></h3>
-    <p>Turn your sound on and tap below to begin the celebration</p>
-    <button class="btn">🔊 Play with Sound</button><a href="#" class="sp-skip">Continue without sound</a></div>`;
+    <p>Tap anywhere to begin the celebration with sound 🔊</p></div>`;
   document.body.appendChild(ov);
-  const close=()=>{ov.classList.add('hide');setTimeout(()=>ov.remove(),600)};
-  ov.querySelector('.btn').onclick=()=>{close();burst(220)};
-  ov.querySelector('.sp-skip').onclick=e=>{e.preventDefault();close();toggleMusic(false)};
+  ov.onclick=()=>{ov.classList.add('hide');setTimeout(()=>ov.remove(),600);burst(220)};
 })();
 $('#party').onclick=()=>{burst();toggleMusic(true)};
 

@@ -106,6 +106,27 @@
   .btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(184,137,43,.45)}
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border);box-shadow:none}
 
+  .byline{font-size:.95rem!important;margin-top:14px!important;letter-spacing:1px}
+  .byline strong{color:var(--gold)}
+  .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:900px;margin:auto}
+  .member{text-align:center;padding:36px 20px;border:1px solid var(--border);border-radius:24px;background:var(--card);backdrop-filter:blur(10px);transition:opacity 1s,transform .4s,box-shadow .3s}
+  .member.in:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(31,35,51,.12)}
+  .avatar{width:150px;height:150px;margin:0 auto 18px;border-radius:50%;overflow:hidden;position:relative;
+    background:radial-gradient(circle at 50% 30%,#fff6e0,#e8cf95 70%,#c9a24e);box-shadow:0 0 0 5px #fff,0 0 0 7px rgba(184,137,43,.35),0 15px 30px rgba(31,35,51,.15)}
+  .avatar img{position:absolute;left:0;bottom:0;width:100%;height:112%;object-fit:cover;object-position:50% 0;transition:transform .5s}
+  .member:hover .avatar img{transform:scale(1.06)}
+  .mwish{margin-top:16px;color:var(--text);opacity:.8;font-size:.92rem;font-style:italic;line-height:1.6}
+  .member h4{font-family:'Playfair Display',serif;font-size:1.25rem}
+  .member span{color:var(--muted);font-size:.85rem;letter-spacing:1px}
+
+  .headline{margin-top:18px;font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:600;color:var(--text)}
+  .headline b{color:var(--gold)}
+  .next{display:flex;flex-direction:column;align-items:center;gap:6px;margin:60px auto 0;width:max-content;color:var(--muted);
+    font-size:.7rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color .2s}
+  .next:hover{color:var(--gold)}
+  .next i{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;background:var(--card);font-style:normal;color:var(--gold);animation:nb 1.8s ease-in-out infinite}
+  @keyframes nb{50%{transform:translateY(6px)}}
+
   /* ---------- Marquee ---------- */
   .marquee{position:relative;z-index:2;overflow:hidden;border-block:1px solid var(--border);background:rgba(184,137,43,.04);padding:20px 0}
   .track{display:flex;gap:50px;width:max-content;font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,2.4rem);white-space:nowrap;will-change:transform}
@@ -203,7 +224,7 @@
 <button class="music" id="music" title="Play Happy Birthday" aria-label="Toggle music">🎵</button>
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 <nav class="dots" id="dots">
-  <a href="#home" title="Home"></a><a href="#tribute" title="Tribute"></a><a href="#qualities" title="Qualities"></a>
+  <a href="#home" title="Home"></a><a href="#team" title="Team"></a><a href="#tribute" title="Tribute"></a><a href="#qualities" title="Qualities"></a>
   <a href="#journey" title="Journey"></a><a href="#wish" title="Make a wish"></a><a href="#wishes" title="Wishes"></a>
 </nav>
 
@@ -211,6 +232,7 @@
 <section class="hero" id="home">
   <div class="hero-inner" id="heroInner">
     <span class="badge">World Infotek Team Presents</span>
+    <div class="headline fu" style="animation-delay:.3s">Happy Birthday <b>Sir Ateeq</b> 🎉</div>
     <div class="photo-wrap" id="photo">
       <div class="ring glow"></div><div class="ring"></div><div class="disc"></div>
       <img class="cutout" src="sir-ateeq.png" alt="Sir Ateeq">
@@ -219,6 +241,7 @@
     <h2 class="fu" style="animation-delay:.9s">Happy Birthday</h2>
     <h1 id="title">Sir Ateeq</h1>
     <p class="fu" style="animation-delay:1.8s">To the leader who inspires, guides and believes in every one of us — today is all about you.</p>
+    <p class="byline fu" style="animation-delay:2s">With love, by <strong>World Infotek Team</strong></p>
     <div class="btns fu" style="animation-delay:2.1s">
       <button class="btn" id="party">🎉 Celebrate</button>
       <a class="btn ghost" href="#wishes">💌 Send Wishes</a>
@@ -227,16 +250,34 @@
   <a class="scroll-hint" href="#tribute"><span class="mouse"></span>Scroll<span class="chev"></span></a>
 </section>
 
+<!-- TEAM -->
+<section id="team">
+  <span class="eyebrow rv up">Presented By</span>
+  <h3 class="title rv up">The <em>World Infotek</em> Team</h3>
+  <div class="divider rv zoom"></div>
+  <p class="sub rv blur">The people behind this celebration — and their wishes for you</p>
+  <div class="team">
+    <div class="member rv up"><div class="avatar"><img src="team-ahmad.png" alt="Muhammad Ahmad"></div><h4>Muhammad Ahmad</h4><span>Team Member</span>
+      <p class="mwish">“Happy Birthday, Sir! Your guidance has shaped how I think and work. Wishing you health, happiness and great success.”</p></div>
+    <div class="member rv up"><div class="avatar"><img src="team-shahzaib.png" alt="Mr. Shahzaib"></div><h4>Mr. Shahzaib</h4><span>Team Member</span>
+      <p class="mwish">“Many happy returns of the day, Sir. Thank you for your trust and leadership — may this year bring you everything you wish for.”</p></div>
+    <div class="member rv up"><div class="avatar"><img src="team-izaz.png" alt="Izaz Ur Rehman"></div><h4>Izaz Ur Rehman</h4><span>Team Member</span>
+      <p class="mwish">“Happy Birthday, Sir Ateeq! Working with you is a privilege. May Allah bless you with a long, joyful and successful life.”</p></div>
+  </div>
+  <a class="next" href="#tribute">Scroll to Tribute<i>↓</i></a>
+</section>
+
 <!-- MARQUEE -->
 <div class="marquee"><div class="track" id="track"></div></div>
 
 <!-- QUOTE -->
 <section class="quote" id="tribute">
   <p id="quote">A true leader does not create followers — he creates more leaders. Thank you, Sir Ateeq, for inspiring every member of World Infotek to dream bigger and work better.</p>
+  <a class="next" href="#stats">Scroll to In Numbers<i>↓</i></a>
 </section>
 
 <!-- STATS -->
-<section>
+<section id="stats">
   <span class="eyebrow rv up">In Numbers</span>
   <h3 class="title rv up">A Legacy of <em>Excellence</em></h3>
   <div class="divider rv zoom"></div>
@@ -247,6 +288,7 @@
     <div class="stat rv flip"><b data-count="24" data-suffix="/7">0</b><span>Inspiration</span></div>
     <div class="stat rv flip"><b data-count="1" data-suffix="">0</b><span>Team, One Family</span></div>
   </div>
+  <a class="next" href="#qualities">Scroll to Qualities<i>↓</i></a>
 </section>
 
 <!-- QUALITIES -->
@@ -261,6 +303,7 @@
     <div class="card rv up"><div class="ic">💡</div><h4>Problem Solver</h4><p>Calm, sharp and ready with answers when it matters most.</p></div>
     <div class="card rv right"><div class="ic">❤️</div><h4>Kind Heart</h4><p>Leading with respect and genuine care for every team member.</p></div>
   </div>
+  <a class="next" href="#journey">Scroll to Journey<i>↓</i></a>
 </section>
 
 <!-- JOURNEY -->
@@ -276,6 +319,7 @@
     <div class="tl-item rv right"><h4>The Growth</h4><p>Projects, clients and achievements that made World Infotek a name to trust.</p></div>
     <div class="tl-item rv left"><h4>The Future</h4><p>Many more years of success ahead — and we are proud to walk it with you.</p></div>
   </div>
+  <a class="next" href="#wish">Scroll to Make a Wish<i>↓</i></a>
 </section>
 
 <!-- CANDLES -->
@@ -289,8 +333,10 @@
       <div class="candle"><div class="flame"></div></div>
     </div>
     <div class="cake-base">🎂</div>
-    <p id="wishMsg" style="color:var(--muted);margin-top:10px">Tap each candle to blow it out</p>
+    <p id="wishMsg" style="color:var(--muted);margin:10px 0 22px">Make a wish, then blow out the candles</p>
+    <button class="btn" id="blow">🌬️ Blow the Candles</button>
   </div>
+  <a class="next" href="#wishes">Scroll to Wishes<i>↓</i></a>
 </section>
 
 <!-- WISHES -->
@@ -350,7 +396,7 @@ $$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundi
 
 // Scroll-driven effects
 const heroIn=$('#heroInner'),prog=$('#progress'),track=$('#track'),fill=$('#tlFill'),tl=$('#timeline'),toTopBtn=$("#toTop"),blobs=$$('.blob');
-const secs=['home','tribute','qualities','journey','wish','wishes'].map(id=>document.getElementById(id)),dots=$$('#dots a');
+const secs=['home','team','tribute','qualities','journey','wish','wishes'].map(id=>document.getElementById(id)),dots=$$('#dots a');
 let ticking=false;
 function onScroll(){
   const y=scrollY,h=innerHeight,max=document.documentElement.scrollHeight-h;
@@ -406,25 +452,29 @@ function toggleMusic(force){ac=ac||new (window.AudioContext||window.webkitAudioC
 mb.onclick=()=>toggleMusic();
 $('#party').onclick=()=>{burst();toggleMusic(true)};
 
-// Candles
-const cs=$$('.candle');
-cs.forEach(c=>c.onclick=()=>{c.classList.add('out');
-  if(cs.every(x=>x.classList.contains('out'))){$('#wishMsg').textContent='🎉 Wish made! May all your dreams come true, Sir Ateeq!';
-    const r=c.getBoundingClientRect();burst(260,r.left,r.top);setTimeout(()=>cs.forEach(x=>x.classList.remove('out')),5000)}});
+// Candles: one tap blows all, tap again to relight
+const cs=$$('.candle'),blowBtn=$('#blow'),wm=$('#wishMsg');
+function blow(){const out=!cs[0].classList.contains('out');
+  cs.forEach((c,i)=>setTimeout(()=>c.classList.toggle('out',out),i*120));
+  if(out){wm.textContent='🎉 Wish made! May all your dreams come true, Sir Ateeq!';blowBtn.textContent='🕯️ Light Again';
+    const r=$('#candles').getBoundingClientRect();setTimeout(()=>burst(240,r.left+r.width/2,r.top),cs.length*120)}
+  else{wm.textContent='Make a wish, then blow out the candles';blowBtn.textContent='🌬️ Blow the Candles'}}
+blowBtn.onclick=blow;cs.forEach(c=>c.onclick=blow);
 
 // Wishes (stored in this browser only)
 const defaults=[
-  {n:'World Infotek Team',t:'Thank you for leading us with vision and kindness. Wishing you endless success and happiness!'},
-  {n:'Development Team',t:'Your guidance makes every project better. Cheers to you, Sir!'},
-  {n:'Design Team',t:'You inspire us to create our best work every day. Have an amazing birthday!'}];
-let wishes;try{wishes=JSON.parse(localStorage.getItem('ateeqWishes'))||defaults}catch{wishes=defaults}
+  {n:'Muhammad Ahmad',t:'Happy Birthday, Sir! Your guidance has shaped how I think and work. Wishing you health, happiness and great success.'},
+  {n:'Mr. Shahzaib',t:'Many happy returns of the day, Sir. Thank you for your trust and leadership — may this year bring you everything you wish for.'},
+  {n:'Izaz Ur Rehman',t:'Happy Birthday, Sir Ateeq! Working with you is a privilege. May Allah bless you with a long, joyful and successful life.'},
+  {n:'World Infotek Team',t:'Thank you for leading us with vision and kindness. Wishing you endless success and happiness!'}];
+let wishes;try{wishes=JSON.parse(localStorage.getItem('ateeqWishesV2'))||defaults}catch{wishes=defaults}
 const list=$('#wishList');
 const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
 function render(newOne){list.innerHTML=wishes.map((w,i)=>`<div class="wish ${newOne&&i===0?'new':'rv up'}"><p>${esc(w.t)}</p><b>— ${esc(w.n)}</b></div>`).join('');
   list.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.12+'s';io.observe(el)})}
 render();
 $('#wishForm').onsubmit=e=>{e.preventDefault();wishes.unshift({n:$('#wName').value.trim(),t:$('#wText').value.trim()});
-  try{localStorage.setItem('ateeqWishes',JSON.stringify(wishes))}catch{}render(true);e.target.reset();burst(120)};
+  try{localStorage.setItem('ateeqWishesV2',JSON.stringify(wishes))}catch{}render(true);e.target.reset();burst(120)};
 </script>
 </body>
 </html>

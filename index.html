@@ -419,6 +419,18 @@ function toggleMusic(force){ac=ac||new (window.AudioContext||window.webkitAudioC
   if(playing){ac.resume();playSong();mb.classList.add('on');mb.textContent='🔊'}
   else{clearTimeout(timer);const c=ac;ac=null;c.close();mb.classList.remove('on');mb.textContent='🎵'}}
 mb.onclick=()=>toggleMusic();
+// Sound on by default. Browsers block audio until the visitor interacts,
+// so if blocked, start on the first click / key / touch anywhere.
+(function autoStart(){
+  toggleMusic(true);
+  if(ac.state==='running')return;
+  clearTimeout(timer);
+  const evs=['pointerdown','keydown','touchstart'];
+  const go=e=>{evs.forEach(n=>removeEventListener(n,go,true));
+    if(e.target.closest&&e.target.closest('#music'))return; // its click handler mutes
+    if(playing&&ac)ac.resume().then(playSong)};
+  evs.forEach(n=>addEventListener(n,go,true));
+})();
 $('#party').onclick=()=>{burst();toggleMusic(true)};
 
 // Candles: one tap blows all, tap again to relight
